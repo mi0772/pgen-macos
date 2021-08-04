@@ -8,9 +8,9 @@ extension Command {
   struct Main: ParsableCommand {
     static var configuration: CommandConfiguration {
       .init(
-        commandName: "PGen",
-        abstract: "A program to generate simple password",
-        version: "0.0.1",
+        commandName: "pgen",
+        abstract: "Simple tool for generate password and track it into history",
+        version: "1.0.0",
         subcommands: [
             Command.Generate.self,
             Command.History.self
