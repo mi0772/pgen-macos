@@ -48,12 +48,12 @@ extension Command {
             let password = PasswordGenerator.sharedInstance.generatePassword(includeNumbers: numbers, includePunctuation: puntuaction, includeSymbols: symbols, length: length)
 
             print("This is your password:\(password)")
+            
+            let dh = DocumentHolder()
+            dh.register(label: label, password: password)
         }
     }
 }
-
-
-
 
 public typealias CharactersArray = [Character]
 public typealias CharactersHash = [CharactersGroup : CharactersArray]

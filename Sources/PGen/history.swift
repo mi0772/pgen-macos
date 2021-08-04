@@ -6,6 +6,7 @@
 //
 
 import ArgumentParser
+import Foundation
 
 extension Command {
     struct History: ParsableCommand {
@@ -23,7 +24,11 @@ extension Command {
         var filter: String = ""
         
         func run() throws {
+            
             print("This is the latest \(elementToShow) generated password" )
+            
+            let dh = DocumentHolder()
+            print(dh.read())
         }
     }
 }
