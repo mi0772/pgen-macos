@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "PGen",
+    platforms: [
+        .macOS(.v10_12),
+    ],
     dependencies: [
         .package(
               name: "swift-argument-parser",

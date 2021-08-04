@@ -10,41 +10,43 @@ import Foundation
 
 class DocumentHolder {
     
+    static let FILE_NAME = ".pgen_history.enc"
+    
     func register(label: String, password: String) {
         
-        let file = "history.enc"
         let text = "\(label):\(password):\(NSDate())\n"
         
-        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+        //let homeDir = FileManager.default.homeDirectoryForCurrentUser
+        
+        //if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
 
-            let fileURL = dir.appendingPathComponent(file)
+        let dir = FileManager.default.homeDirectoryForCurrentUser
+        let fileURL = dir.appendingPathComponent(DocumentHolder.FILE_NAME)
+        do {
+            let fileHandle = try FileHandle(forWritingTo: fileURL)
+                fileHandle.seekToEndOfFile()
+                fileHandle.write(text.data(using: .utf8)!)
+            }
+        catch {
             do {
-                let fileHandle = try FileHandle(forWritingTo: fileURL)
-                    fileHandle.seekToEndOfFile()
-                    fileHandle.write(text.data(using: .utf8)!)
-                }
-            catch {
-                do {
-                    try text.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
-                } catch let error as NSError {
-                    print("Error creating file \(error)")
-                }
+                try text.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
+            } catch let error as NSError {
+                print("Error creating file \(error)")
             }
         }
     }
     
     func read() -> String {
-        let file = "history.enc"
         
-        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+        let dir = FileManager.default.homeDirectoryForCurrentUser
+        let fileURL = dir.appendingPathComponent(DocumentHolder.FILE_NAME)
 
-            let fileURL = dir.appendingPathComponent(file)
-
-            do {
-                return try String(contentsOf: fileURL, encoding: .utf8)
-            }
-            catch {/* error handling here */}
+        do {
+            return try String(contentsOf: fileURL, encoding: .utf8)
         }
-        return ""
+        catch {
+            return ""
+        }
+    
     }
 }

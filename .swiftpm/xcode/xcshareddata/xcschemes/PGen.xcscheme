@@ -77,11 +77,11 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "g 16 amazon.com true true true"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "h"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>
