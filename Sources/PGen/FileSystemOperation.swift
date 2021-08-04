@@ -14,12 +14,8 @@ class DocumentHolder {
     
     func register(label: String, password: String) {
         
-        let text = "\(label):\(password):\(NSDate())\n"
+        let text = "\(label) \(password) \(NSDate())\n"
         
-        //let homeDir = FileManager.default.homeDirectoryForCurrentUser
-        
-        //if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-
         let dir = FileManager.default.homeDirectoryForCurrentUser
         let fileURL = dir.appendingPathComponent(DocumentHolder.FILE_NAME)
         do {

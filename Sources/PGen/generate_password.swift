@@ -121,14 +121,6 @@ public class PasswordGenerator {
         self.hash = CharactersGroup.hash
     }
 
-    public func generateBasicPassword() -> String {
-        return generatePassword(includeNumbers: true, includePunctuation: false, includeSymbols: false, length: 8)
-    }
-
-    public func generateComplexPassword() -> String {
-        return generatePassword(includeNumbers: true, includePunctuation: true, includeSymbols: true, length: 16)
-    }
-
     private func charactersForGroup(group: CharactersGroup) -> CharactersArray {
         if let characters = hash[group] {
             return characters
