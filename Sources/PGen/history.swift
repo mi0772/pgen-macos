@@ -17,18 +17,29 @@ extension Command {
             )
         }
         
-        @Argument(help: "Numbers of last element to show")
+        @Option(name: [.customLong("element"), .customShort("e")], help: "Numbers of last element to show")
         var elementToShow: Int = 10
         
-        @Argument(help: "Simple filter for label")
+        @Option(name: [.customLong("filter"), .customShort("f")], help: "Simple filter for label")
         var filter: String = ""
         
         func run() throws {
-            
-            print("This is the latest \(elementToShow) generated password" )
-            
             let dh = DocumentHolder()
-            print(dh.read())
+            var content = dh.read().components(separatedBy: "\n")
+            
+            if filter != "" {
+                print("history for \(filter) filter")
+                content = content.filter{ $0.contains(filter) }
+            }
+            
+            if elementToShow > 0 {
+                print("This is the latest \(elementToShow) generated password" )
+                print(content.prefix(elementToShow).joined(separator: "\n"))
+            }
+            else {
+                print("This is all generated password" )
+                print(content.joined(separator: "\n"))
+            }
         }
     }
 }
