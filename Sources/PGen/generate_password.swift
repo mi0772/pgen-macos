@@ -34,20 +34,22 @@ extension Command {
         var symbols: Bool = false
         
         func run() throws {
-            print("I'm gonna generate a password length \(length) for \(label)")
+            print("Ok, I'll generate a password with:")
+            print(" - length : \(length)")
+            print(" - label : \(label)")
             if numbers {
-                print("numbers will be included")
+                print(" - numbers will be included")
             }
             if puntuaction {
-                print("puntuaction will be included")
+                print(" - puntuaction will be included")
             }
             if symbols {
-                print("symbols will be included")
+                print(" - symbols will be included")
             }
             
             let password = PasswordGenerator.sharedInstance.generatePassword(includeNumbers: numbers, includePunctuation: puntuaction, includeSymbols: symbols, length: length)
 
-            print("This is your password:\(password)")
+            print("\nthis is your password \(password)")
             
             let dh = DocumentHolder()
             dh.register(label: label, password: password)
