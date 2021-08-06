@@ -34,7 +34,7 @@ extension Command {
             
             if elementToShow > 0 {
                 print("This is the latest \(elementToShow) generated password" )
-                print(content.suffix(elementToShow).joined(separator: "\n"))
+                print(content.suffix(elementToShow+1).joined(separator: "\n"))
             }
             else {
                 print("This is all generated password" )
