@@ -76,12 +76,12 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "h -e 10 --filter micro"
-            isEnabled = "NO">
+            argument = "h -e 2 --filter micro"
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "g 10 microsoft.com true true true"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>
